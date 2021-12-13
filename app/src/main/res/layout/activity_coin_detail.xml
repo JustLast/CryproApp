@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp"
+    tools:context=".CoinDetailActivity">
+
+    <ImageView
+        android:id="@+id/ivLogoCoinDetail"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tvFromSymbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:textColor="@android:color/holo_purple"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvSlash"
+        app:layout_constraintEnd_toStartOf="@+id/tvSlash"
+        app:layout_constraintTop_toTopOf="@+id/tvSlash"
+        tools:text="BTC" />
+
+    <TextView
+        android:id="@+id/tvSlash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/ivLogoCoinDetail"
+        app:layout_constraintStart_toStartOf="@+id/ivLogoCoinDetail"
+        app:layout_constraintTop_toBottomOf="@+id/ivLogoCoinDetail"
+        android:text="/" />
+
+    <TextView
+        android:id="@+id/tvToSymbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvSlash"
+        app:layout_constraintStart_toEndOf="@+id/tvSlash"
+        app:layout_constraintTop_toTopOf="@+id/tvSlash"
+        tools:text="USD" />
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="#63000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSlash" />
+
+    <TextView
+        android:id="@+id/tvDetailPriceTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view1"
+        android:text="Цена: " />
+
+    <TextView
+        android:id="@+id/tvDetailPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDetailPriceTitle"
+        app:layout_constraintStart_toEndOf="@+id/tvDetailPriceTitle"
+        app:layout_constraintTop_toTopOf="@+id/tvDetailPriceTitle"
+        tools:text="0.00" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="#63000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDetailPrice"
+        tools:layout_editor_absoluteX="-27dp" />
+
+    <TextView
+        android:id="@+id/tvMinPriceTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view2"
+        android:text="Минимум за день: " />
+
+    <TextView
+        android:id="@+id/tvMinPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvMinPriceTitle"
+        app:layout_constraintStart_toEndOf="@+id/tvMinPriceTitle"
+        app:layout_constraintTop_toTopOf="@+id/tvMinPriceTitle"
+        tools:text="0.00" />
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="#63000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMinPriceTitle" />
+
+    <TextView
+        android:id="@+id/tvMaxPriceTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view3"
+        android:text="Максимум за день: " />
+
+    <TextView
+        android:id="@+id/tvMaxPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="@android:color/holo_green_dark"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvMaxPriceTitle"
+        app:layout_constraintStart_toEndOf="@+id/tvMaxPriceTitle"
+        app:layout_constraintTop_toTopOf="@+id/tvMaxPriceTitle"
+        tools:text="0.00" />
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="#63000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMaxPriceTitle" />
+
+    <TextView
+        android:id="@+id/tvLastDealTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view4"
+        android:text="Последняя сделка: " />
+
+    <TextView
+        android:id="@+id/tvLastDeal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvLastDealTitle"
+        app:layout_constraintStart_toEndOf="@+id/tvLastDealTitle"
+        app:layout_constraintTop_toTopOf="@+id/tvLastDealTitle"
+        tools:text="None" />
+
+    <View
+        android:id="@+id/view5"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="#63000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLastDealTitle" />
+
+    <TextView
+        android:id="@+id/tvUpdateTimeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view5"
+        android:text="Обновлено: " />
+
+    <TextView
+        android:id="@+id/tvDetailLastUpdateTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvUpdateTimeTitle"
+        app:layout_constraintStart_toEndOf="@+id/tvUpdateTimeTitle"
+        app:layout_constraintTop_toTopOf="@+id/tvUpdateTimeTitle"
+        tools:text="00:00:00" />
+
+    <View
+        android:id="@+id/view6"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="#63000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvUpdateTimeTitle" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
