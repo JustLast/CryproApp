@@ -1,15 +1,14 @@
-package com.example.cryptoapp
+package com.example.cryptoapp.presentation
 
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import com.example.cryptoapp.api.ApiFactory
-import com.example.cryptoapp.database.AppDatabase
-import com.example.cryptoapp.pojo.CoinPriceInfo
-import com.example.cryptoapp.pojo.CoinPriceInfoRawData
+import com.example.cryptoapp.data.network.ApiFactory
+import com.example.cryptoapp.data.database.AppDatabase
+import com.example.cryptoapp.data.model.CoinPriceInfo
+import com.example.cryptoapp.data.model.CoinPriceInfoRawData
 import com.google.gson.Gson
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
@@ -26,15 +25,15 @@ class CoinVewModel(application: Application) : AndroidViewModel(application) {
     }
 
     private fun loadData() {
-        val disposable = ApiFactory.apiService.getTopCoinsInfo()
-            .subscribeOn(Schedulers.io())
+        val disposable = ApiFactory.apiService.getTopCoinsInfo(limit = 50)
 //            .observeOn(AndroidSchedulers.mainThread())
-            .map { it.data?.map { it.coinInfo?.name }?.joinToString(",") + "" }
+            .map { it.data?.map { it1 -> it1.coinInfo?.name }?.joinToString(",") + "" }
             .flatMap { ApiFactory.apiService.getFullPriceList(fSyms = it) }
             .map { getPriceListFromRawData(it) }
             .delaySubscription(10, TimeUnit.SECONDS)
             .repeat()
             .retry()
+            .subscribeOn(Schedulers.io())
             .subscribe({
                 db.coinPriceInfoDao().insertPriceList(it)
                 Log.d("TEST_OF_LOADING_DATA", "Success: $it")
