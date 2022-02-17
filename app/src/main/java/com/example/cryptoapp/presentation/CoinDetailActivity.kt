@@ -2,9 +2,8 @@ package com.example.cryptoapp.presentation
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.Observer
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.cryptoapp.R
 import com.squareup.picasso.Picasso
@@ -16,6 +15,7 @@ class CoinDetailActivity : AppCompatActivity() {
 
     companion object {
         private const val EXTRA_FROM_SYMBOL = "fSym"
+        private const val EMPTY_SYMBOL = ""
 
         fun newIntent(context: Context, fromSymbol: String): Intent {
             val intent = Intent(context, CoinDetailActivity::class.java)
@@ -33,17 +33,16 @@ class CoinDetailActivity : AppCompatActivity() {
             return
         }
 
-        val fromSymbol = intent.getStringExtra(EXTRA_FROM_SYMBOL)
+        val fromSymbol = intent.getStringExtra(EXTRA_FROM_SYMBOL) ?: EMPTY_SYMBOL
 
-        if (fromSymbol == null) {
+        if (fromSymbol == EMPTY_SYMBOL) {
             finish()
             return
         }
 
         viewModel = ViewModelProvider(this)[CoinVewModel::class.java]
-        viewModel.getDetailInfo(fromSymbol).observe(this, Observer {
-            Picasso.get().load(it.getFullImageUrl()).into(ivLogoCoinDetail)
 
+        viewModel.getDetailInfo(fromSymbol).observe(this) {
             tvFromSymbol.text = it.fromSymbol.toString()
             tvToSymbol.text = it.toSymbol.toString()
 
@@ -51,7 +50,9 @@ class CoinDetailActivity : AppCompatActivity() {
             tvMinPrice.text = it.lowDay.toString()
             tvMaxPrice.text = it.highDay.toString()
             tvLastDeal.text = it.lastMarket.toString()
-            tvDetailLastUpdateTime.text = it.getFormattedTime()
-        })
+            tvDetailLastUpdateTime.text = it.lastUpdate
+
+            Picasso.get().load(it.imageUrl).into(ivLogoCoinDetail)
+        }
     }
 }

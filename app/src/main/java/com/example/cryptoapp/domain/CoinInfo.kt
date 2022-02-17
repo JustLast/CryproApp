@@ -1,12 +1,12 @@
 package com.example.cryptoapp.domain
 
 data class CoinInfo(
-    var fromSymbol: String = "",
-    var toSymbol: String? = null,
-    var price: Double? = null,
-    var lastUpdate: Long? = null,
-    var highDay: Double? = null,
-    var lowDay: Double? = null,
-    var lastMarket: String? = null,
-    var imageUrl: String? = null
+    var fromSymbol: String,
+    var toSymbol: String?,
+    var price: Double?,
+    var lastUpdate: String?,
+    var highDay: Double?,
+    var lowDay: Double?,
+    var lastMarket: String?,
+    var imageUrl: String
 )
